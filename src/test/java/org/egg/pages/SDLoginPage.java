@@ -11,6 +11,7 @@ public class SDLoginPage extends InitPage{
     public static final String CAJA_USUARIO = "input#user-name";
     public static final String CAJA_CLAVE = "input#password";
     public static final String ERROR_LOGIN = "h3[data-test=\"error\"]";
+    public static final String PRODUCT_LABEL = "div.product_label";
 
     // Inicialización por PageFactory
 
@@ -25,6 +26,9 @@ public class SDLoginPage extends InitPage{
 
     @FindBy (css=CAJA_CLAVE)
     WebElement cajaClave;
+
+    @FindBy (css=PRODUCT_LABEL)
+    WebElement productLabel;
 
     // Constructor
     public SDLoginPage(WebDriver driver) { 
@@ -45,10 +49,14 @@ public class SDLoginPage extends InitPage{
         return errorLogin.getText();
     }
 
-    public void ingresoUsuarioCorrectoClaveIncorrecta(String usuario, String clave) {
+    public void ingresoUsuarioYClave(String usuario, String clave) {
         cajaUsuario.sendKeys(usuario);
         cajaClave.sendKeys(clave);
         botonLogin.click();
+    }
+
+    public String obtenerTitulo() {
+        return productLabel.getText();
     }
     
 }

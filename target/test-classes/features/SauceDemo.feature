@@ -14,8 +14,20 @@ Scenario Outline: Intentar iniciar sesión con usuario correcto y clave incorrec
     Then Veo un mensaje de error: "Epic sadface: Username and password do not match any user in this service"
 
     Examples:
-    |usuario|clave|
-    |standard_user|incorrecta|
-    |locked_out_user|incorrecta|
-    |problem_user|incorrecta|
+    |usuario                |clave     |
+    |standard_user          |incorrecta|
+    |locked_out_user        |incorrecta|
+    |problem_user           |incorrecta|
     |performance_glitch_user|incorrecta|
+
+@login
+Scenario Outline: Intentar iniciar sesión con usuario correcto y clave correcta
+    When Intento iniciar sesión con "<usuario>" correcto y "<clave>" correcta
+    Then Veo un título en la página que dice "Products"
+
+    Examples:
+    |usuario                |clave       |
+    |standard_user          |secret_sauce|
+    |locked_out_user        |secret_sauce|
+    |problem_user           |secret_sauce|
+    |performance_glitch_user|secret_sauce|ø

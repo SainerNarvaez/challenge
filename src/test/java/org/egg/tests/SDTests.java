@@ -32,7 +32,16 @@ public class SDTests {
 
     @When("Intento iniciar sesión con {string} correcto y {string} incorrecta")
     public void Intento_iniciar_sesión_con_usuario_correcto_y_clave_incorrecta(String usuario, String clave){
-        page.ingresoUsuarioCorrectoClaveIncorrecta(usuario, clave);
+        page.ingresoUsuarioYClave(usuario, clave);
+    }
+
+    @When("Intento iniciar sesión con {string} correcto y {string} correcta")
+    public void Intento_iniciar_sesion_con_correcto_y_correcta(String usuario, String clave) {
+        page.ingresoUsuarioYClave(usuario, clave);    }
+
+    @Then("Veo un título en la página que dice {string}")
+    public void Veo_un_titulo_en_la_pagina_que_dice(String titulo) {
+        assertEquals(titulo, page.obtenerTitulo());
     }
 
 }
